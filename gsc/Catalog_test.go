@@ -37,12 +37,14 @@ func TestCatalog(t *testing.T) {
 
 	y, ok := c.Get("foo", reflect.TypeOf(test{}))
 	assert.True(t, ok)
-	assert.NotNil(t, y)
-	assert.Equal(t, x, y)
+	if assert.NotNil(t, y) {
+		assert.Equal(t, x, y)
+	}
 
 	y, ok = c.Get("foo", reflect.TypeOf(&test{}))
 	assert.True(t, ok)
-	assert.NotNil(t, y)
-	assert.Equal(t, x, y)
+	if assert.NotNil(t, y) {
+		assert.Equal(t, x, y)
+	}
 
 }
